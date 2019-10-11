@@ -1,15 +1,15 @@
 # Setup Pantheon Terminus
 
-A Github Action for quickly installing and configuring the Pantheon CLI tool, Terminus.
+A Github Action for quickly installing and configuring the Pantheon CLI tool, [Terminus](https://github.com/pantheon-systems/terminus).
 
 ## Requirements
 
-- Pantheon Account + Site
-- Pantheon Machine Token
+- [Pantheon](https://pantheon.io) Account + Site
+- [Pantheon Machine Token](https://pantheon.io/docs/machine-tokens)
 
 ## Usage
 
-Using this action requires first setting up PHP in the workflow. Huge thanks to @shivammathur for all that legwork: https://github.com/shivammathur/setup-php
+Using this action requires first setting up PHP in the workflow. Huge thanks to [@shivammathur](https://github.com/shivammathur) for all that legwork creating [`setup-php`](https://github.com/shivammathur/setup-php).
 
 Please note that the PHP setup action is required __before__ running Terminus setup.
 
