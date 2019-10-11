@@ -1,0 +1,29 @@
+{
+  "name": "setup-pantheon-terminus",
+  "version": "1.0.0",
+  "description": "Install and configure the Pantheon CLI tool, Terminus.",
+  "main": "index.js",
+  "dependencies": {
+    "@actions/core": "^1.1.3",
+    "@actions/exec": "^1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kopepasah/setup-pantheon-terminus.git"
+  },
+  "keywords": [
+    "pantheon",
+    "terminus",
+    "cli",
+    "wordpress",
+    "php"
+  ],
+  "author": "Justin Kopepasah <justin@kopepasah.com>",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/kopepasah/setup-pantheon-terminus/issues"
+  },
+  "homepage": "https://github.com/kopepasah/setup-pantheon-terminus#readme"
+}
