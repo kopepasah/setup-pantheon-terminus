@@ -5,19 +5,26 @@
  */
 
 // External Dependencies
-const core = require( '@actions/core' );
-const exec = require( '@actions/exec' );
+const core = require('@actions/core');
+const child_process = require('child_process');
+const fs = require('fs');
 
-async function run() {
-	try {
-		const PANTHEON_MACHINE_TOKEN = core.getInput( 'pantheon-machine-token' );
-		await exec.exec( 'sudo mkdir -p ~/terminus' );
-		await exec.exec( 'curl -O https://raw.githubusercontent.com/pantheon-systems/terminus-installer/master/builds/installer.phar' );
-		await exec.exec( 'sudo php installer.phar install --install-dir=~/terminus' ); // Sudo is required in order to install bin/terminus.
-		await exec.exec( 'terminus', [ 'auth:login', `--machine-token=${ PANTHEON_MACHINE_TOKEN }` ] );
-	} catch ( error ) {
-		core.setFailed( error.message );
+try {
+	const home = process.env['HOME'];
+	const homeTerminus = home + '/terminus';
+
+	const PANTHEON_MACHINE_TOKEN = core.getInput( 'pantheon-machine-token' );
+
+	if (!PANTHEON_MACHINE_TOKEN) {
+		core.setFailed("The pantheon-machine-token argument is missing.");
+		return;
 	}
-}
 
-run()
+	fs.mkdirSync(homeTerminus, { recursive: true });
+
+	child_process.execSync( 'curl -O https://raw.githubusercontent.com/pantheon-systems/terminus-installer/master/builds/installer.phar' );
+	child_process.execSync( 'sudo php installer.phar install --install-dir=~/terminus' );
+	child_process.execSync( 'terminus', [ 'auth:login', `--machine-token=${ PANTHEON_MACHINE_TOKEN }` ] );
+} catch ( error ) {
+	core.setFailed( error.message );
+}
