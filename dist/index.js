@@ -80,9 +80,14 @@ try {
 	console.log('Downloading Terminus');
 	child_process.execSync( 'curl -O https://raw.githubusercontent.com/pantheon-systems/terminus-installer/master/builds/installer.phar' );
 	console.log('Installing Terminus');
-	child_process.execSync( 'sudo php installer.phar install --install-dir=~/terminus' );
-	console.log('Authenticating Terminus');
-	child_process.execSync( 'terminus', [ 'auth:login', `--machine-token=${PANTHEON_MACHINE_TOKEN}` ] );
+	var install = child_process.execSync( 'sudo php installer.phar install --install-dir=~/terminus' );
+
+	install.stdout.pipe(process.stdout);
+	install.on('exit', function() {
+		console.log('Authenticating Terminus');
+		child_process.execSync( 'terminus', [ 'auth:login', `--machine-token=${PANTHEON_MACHINE_TOKEN}` ] );
+	})
+
 } catch ( error ) {
 	core.setFailed( error.message );
 }
