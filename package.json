@@ -4,9 +4,12 @@
   "description": "Install and configure the Pantheon CLI tool, Terminus.",
   "main": "index.js",
   "devDependencies": {
-    "@actions/core": "^1.2.4"
+    "@actions/core": "^1.2.4",
+    "@zeit/ncc": "^0.20.5"
   },
-  "scripts": {},
+  "scripts": {
+    "build": "node scripts/build.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kopepasah/setup-pantheon-terminus.git"
