@@ -23,7 +23,7 @@ try {
 	fs.mkdirSync(homeTerminus, { recursive: true });
 
 	child_process.execSync( 'curl -O https://raw.githubusercontent.com/pantheon-systems/terminus-installer/master/builds/installer.phar' );
-	child_process.execSync( 'sudo php installer.phar install --install-dir=~/terminus && terminus auth:login --machine-token=${PANTHEON_MACHINE_TOKEN}' );
+	child_process.execSync( `sudo php installer.phar install --install-dir=~/terminus && terminus auth:login --machine-token=${PANTHEON_MACHINE_TOKEN}` );
 } catch ( error ) {
 	core.setFailed( error.message );
 }
