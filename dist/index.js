@@ -68,7 +68,7 @@ try {
 	const home = process.env['HOME'];
 	const homeTerminus = home + '/terminus';
 
-	const PANTHEON_MACHINE_TOKEN = core.getInput( 'pantheon-machine-token' );
+	const PANTHEON_MACHINE_TOKEN = core.getInput('pantheon-machine-token');
 
 	if (!PANTHEON_MACHINE_TOKEN) {
 		core.setFailed("The pantheon-machine-token argument is missing.");
@@ -77,9 +77,12 @@ try {
 
 	fs.mkdirSync(homeTerminus, { recursive: true });
 
+	console.log('Downloading Terminus');
 	child_process.execSync( 'curl -O https://raw.githubusercontent.com/pantheon-systems/terminus-installer/master/builds/installer.phar' );
+	console.log('Installing Terminus');
 	child_process.execSync( 'sudo php installer.phar install --install-dir=~/terminus' );
-	child_process.execSync( 'terminus', [ 'auth:login', `--machine-token=${ PANTHEON_MACHINE_TOKEN }` ] );
+	console.log('Authenticating Terminus');
+	child_process.execSync( 'terminus', [ 'auth:login', `--machine-token=${PANTHEON_MACHINE_TOKEN}` ] );
 } catch ( error ) {
 	core.setFailed( error.message );
 }
