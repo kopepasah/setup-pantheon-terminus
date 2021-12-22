@@ -13,6 +13,19 @@ Using this action requires first setting up PHP in the workflow. Huge thanks to 
 
 Please note that the PHP setup action is required __before__ running Terminus setup.
 
+### Variables
+`pantheon-machine-token` (required): This action will not be able to authenticate to panthon unless you pass in your [Pantheon Machine Token](https://pantheon.io/docs/machine-tokens).
+
+`terminus-version` (optional): Due to your project build environment, you may need to remain on an older version of terminus. If so, you can use this variable to do so. Any version format supported by terminus's installer.phar will work. Here is an example:
+
+```yaml
+- name: Installing Terminus
+  uses: chromatichq/setup-pantheon-terminus@master
+  with:
+	pantheon-machine-token: YOUR_TOKEN
+	terminus-version: 2.6.1
+```
+
 ### Workflow Example
 
 The following is a Github Workflow example which will install PHP and Terminus, then output the sites on Pantheon for that account.
