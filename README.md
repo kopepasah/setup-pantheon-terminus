@@ -22,8 +22,8 @@ Please note that the PHP setup action is required __before__ running Terminus se
 - name: Installing Terminus
   uses: chromatichq/setup-pantheon-terminus@master
   with:
-	pantheon-machine-token: YOUR_TOKEN
-	terminus-version: 2.6.1
+    pantheon-machine-token: YOUR_TOKEN
+    terminus-version: 2.6.1
 ```
 
 ### Workflow Example
