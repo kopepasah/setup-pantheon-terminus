@@ -8,7 +8,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    name: Test terminus
+    name: Terminus
     steps:
 
       - name: Checkout
