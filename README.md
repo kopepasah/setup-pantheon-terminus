@@ -33,7 +33,7 @@ jobs:
       uses: kopepasah/setup-pantheon-terminus@2
 
     - name: Login to Pantheon
-      run: terminus auth:login -q --machine-token=${{ secrets PANTHEON_MACHINE_TOKEN }}
+      run: terminus auth:login -q --machine-token=${{ secrets.PANTHEON_MACHINE_TOKEN }}
 
     - name: List Sites
       if: success()
