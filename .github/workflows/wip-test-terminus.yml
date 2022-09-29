@@ -1,0 +1,30 @@
+name: WIPTest
+
+on:
+  pull_request:
+    branches:
+    - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Test terminus
+    steps:
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Terminus
+        uses: ./
+
+      - name: Expect terminus command to be available
+        run: terminus -V
+
+      - name: Expect terminus to be able to login
+        env:
+          machine-token: ${{ secrets.PANTHEON_MACHINE_TOKEN }}
+        if: ${{ '' != env.machine-token }}
+        run: terminus auth:login -q --machine-token=${{ env.machine-token }}
+
+      - name: Expect terminus to print art
+        run: terminus art
