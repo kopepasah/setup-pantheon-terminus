@@ -30,7 +30,7 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Setup Terminus
-      uses: kopepasah/setup-pantheon-terminus@v2
+      uses: kopepasah/setup-pantheon-terminus@2
 
     - name: Login to Pantheon
       run: terminus auth:login -q --machine-token=${{ secrets PANTHEON_MACHINE_TOKEN }}
