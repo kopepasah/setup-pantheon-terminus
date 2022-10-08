@@ -1,3 +1,7 @@
+# ❗❗❗ DEPRECATION NOTICE ❗❗❗
+
+# This action has been deprecated in favor of the [offical Pantheon Systems action for `terminus`](https://github.com/pantheon-systems/terminus-github-actions). On December 1st 2022, this repo will be archived (set to read-only).
+
 # Setup Pantheon Terminus :zap:
 
 A Github Action for quickly installing and configuring the Pantheon CLI tool, [Terminus](https://github.com/pantheon-systems/terminus).
